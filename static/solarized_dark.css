@@ -5,80 +5,78 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 */
 
 .hljs {
-  display: block;
-  overflow-x: auto;
-  padding: 0.5em;
-  background: #002b36;
-  color: #839496;
-}
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    color: #abb2bf;
+    background: #282c34;
+  }
 
-.hljs-comment,
-.hljs-quote {
-  color: #586e75;
-}
+  .hljs-comment,
+  .hljs-quote {
+    color: #5c6370;
+    font-style: italic;
+  }
 
-/* Solarized Green */
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-addition {
-  color: #859900;
-}
+  .hljs-doctag,
+  .hljs-keyword,
+  .hljs-formula {
+    color: #c678dd;
+  }
 
-/* Solarized Cyan */
-.hljs-number,
-.hljs-string,
-.hljs-meta .hljs-meta-string,
-.hljs-literal,
-.hljs-doctag,
-.hljs-regexp {
-  color: #2aa198;
-}
+  .hljs-section,
+  .hljs-name,
+  .hljs-selector-tag,
+  .hljs-deletion,
+  .hljs-subst {
+    color: #e06c75;
+  }
 
-/* Solarized Blue */
-.hljs-title,
-.hljs-section,
-.hljs-name,
-.hljs-selector-id,
-.hljs-selector-class {
-  color: #268bd2;
-}
+  .hljs-literal {
+    color: #56b6c2;
+  }
 
-/* Solarized Yellow */
-.hljs-attribute,
-.hljs-attr,
-.hljs-variable,
-.hljs-template-variable,
-.hljs-class .hljs-title,
-.hljs-type {
-  color: #b58900;
-}
+  .hljs-string,
+  .hljs-regexp,
+  .hljs-addition,
+  .hljs-attribute,
+  .hljs-meta-string {
+    color: #98c379;
+  }
 
-/* Solarized Orange */
-.hljs-symbol,
-.hljs-bullet,
-.hljs-subst,
-.hljs-meta,
-.hljs-meta .hljs-keyword,
-.hljs-selector-attr,
-.hljs-selector-pseudo,
-.hljs-link {
-  color: #cb4b16;
-}
+  .hljs-built_in,
+  .hljs-class .hljs-title {
+    color: #e6c07b;
+  }
 
-/* Solarized Red */
-.hljs-built_in,
-.hljs-deletion {
-  color: #dc322f;
-}
+  .hljs-attr,
+  .hljs-variable,
+  .hljs-template-variable,
+  .hljs-type,
+  .hljs-selector-class,
+  .hljs-selector-attr,
+  .hljs-selector-pseudo,
+  .hljs-number {
+    color: #d19a66;
+  }
 
-.hljs-formula {
-  background: #073642;
-}
+  .hljs-symbol,
+  .hljs-bullet,
+  .hljs-link,
+  .hljs-meta,
+  .hljs-selector-id,
+  .hljs-title {
+    color: #61aeee;
+  }
 
-.hljs-emphasis {
-  font-style: italic;
-}
+  .hljs-emphasis {
+    font-style: italic;
+  }
 
-.hljs-strong {
-  font-weight: bold;
-}
+  .hljs-strong {
+    font-weight: bold;
+  }
+
+  .hljs-link {
+    text-decoration: underline;
+  }
