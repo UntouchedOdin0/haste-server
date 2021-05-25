@@ -42,4 +42,4 @@ jobs:
             docker pull ghcr.io/thedeveloperden/haste-server # DO NOT REMOVE THIS OR EVERYTHING WILL BREAK
             docker stop haste-server
             docker rm haste-server
-            docker run --name haste-serve --mount source=pastes,target=./data -d --restart unless-stopped ghcr.io/thedeveloperden/haste-server
+            docker run --name haste-serve --mount source=pastes,target=/var/data/pastes -d --restart unless-stopped ghcr.io/thedeveloperden/haste-server
