@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  push_to_registry:
+    name: Push Docker image to GitHub Packages
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@master
+      - name: Push to GitHub Packages
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.PAT }}
+          registry: ghcr.io
+          repository: thedeveloperden/haste-server
+          tags: ${{ steps.package-version.outputs.current-version }}
+          tag_with_ref: true
+  deploy:
+    needs: [ push_to_registry ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Push to server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.DEPLOY_USERNAME }}
+          password: ${{ secrets.DEPLOY_PASSWORD }}
+          script: |
+            docker pull ghcr.io/thedeveloperden/haste-server # DO NOT REMOVE THIS OR EVERYTHING WILL BREAK
+            docker stop haste-server
+            docker rm haste-server
+            docker run --name haste-serve --mount source=pastes,target=/var/data/pastes -d --restart unless-stopped ghcr.io/thedeveloperden/haste-server
