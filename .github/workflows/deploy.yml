@@ -27,19 +27,3 @@ jobs:
           repository: thedeveloperden/haste-server
           tags: ${{ steps.package-version.outputs.current-version }}
           tag_with_ref: true
-  deploy:
-    needs: [ push_to_registry ]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: Push to server
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SERVER_IP }}
-          username: ${{ secrets.DEPLOY_USERNAME }}
-          password: ${{ secrets.DEPLOY_PASSWORD }}
-          script: |
-            docker pull ghcr.io/thedeveloperden/haste-server # DO NOT REMOVE THIS OR EVERYTHING WILL BREAK
-            docker stop haste-server
-            docker rm haste-server
-            docker run --name haste-server --net=net -p 7777:7777 --mount source=pastes,target=/var/data/pastes -d --restart unless-stopped ghcr.io/thedeveloperden/haste-server
